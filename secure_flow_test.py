@@ -23,3 +23,18 @@ decrypted = decrypt_message(key_b, nonce, encrypted)
 
 print("Original:", message)
 print("Decrypted:", decrypted)
+
+from signatures import generate_signing_keys, sign_message, verify_signature
+
+# Signing keys
+sign_priv, sign_pub = generate_signing_keys()
+
+# Sign message
+signature = sign_message(sign_priv, message)
+
+# Verify before decrypting
+if verify_signature(sign_pub, message, signature):
+    decrypted = decrypt_message(key_b, nonce, encrypted)
+    print("Decrypted:", decrypted)
+else:
+    print("Message verification failed!")
