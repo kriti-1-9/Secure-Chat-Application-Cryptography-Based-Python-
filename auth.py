@@ -1,6 +1,9 @@
 import bcrypt
 import time
 
+from fastapi import logger
+from monitoring import dashboard, logger
+
 class AuthSystem:
 
     def __init__(self):
@@ -18,6 +21,13 @@ class AuthSystem:
     # Register User
     # =========================
     def register(self, username, password):
+        
+        dashboard.user_registered()
+
+        logger.log_event(
+        "USER_REGISTERED",
+        f"User {username} registered"
+        )
 
         hashed = bcrypt.hashpw(
             password.encode(),
@@ -32,6 +42,26 @@ class AuthSystem:
     # Login User
     # =========================
     def login(self, username, password):
+        dashboard.login_success()
+
+        logger.log_event(
+            "LOGIN_SUCCESS",
+            f"User {username} logged in successfully"
+        )
+        
+        dashboard.user_registered()
+
+        logger.log_event(
+        "USER_REGISTERED",
+        f"User {username} registered"
+        )
+        
+        dashboard.login_failure()
+
+        logger.log_event(
+            "LOGIN_FAILURE",
+            f"Failed login attempt for {username}"
+        )
 
         current_time = time.time()
 
@@ -48,6 +78,13 @@ class AuthSystem:
                 else:
                     # Reset after block expires
                     self.failed_attempts[username] = [0, current_time]
+        
+        dashboard.account_blocked()
+
+        logger.log_event(
+            "ACCOUNT_BLOCKED",
+            f"User {username} blocked due to excessive attempts"
+        )
 
         # User exists?
         if username not in self.users:
@@ -78,3 +115,4 @@ class AuthSystem:
                 self.failed_attempts[username][1] = current_time
 
             return False
+    

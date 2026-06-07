@@ -1,5 +1,6 @@
 from encryption import encrypt_message, decrypt_message
 from signatures import sign_message, verify_signature
+from monitoring import dashboard, logger
 
 class Client:
 
@@ -10,6 +11,12 @@ class Client:
         self.signing_public = signing_public
 
     def send_message(self, plaintext):
+        dashboard.message_sent()
+
+        logger.log_event(
+        "MESSAGE_SENT",
+        f"{self.name} sent a message"
+        )
 
         # Sign message
         signature = sign_message(self.signing_private, plaintext)

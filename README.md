@@ -1,31 +1,77 @@
-## 🔐 Secure Chat Application (Python)
+# 🔐 Secure Communication Framework
 
-This project is a cryptography-focused secure communication system designed to demonstrate how modern messaging applications achieve confidentiality, integrity, and secure key exchange.
+A cybersecurity-focused secure communication system built in Python to demonstrate modern cryptographic protocols, secure authentication mechanisms, message lifecycle management, and security monitoring.
 
-### 🚀 Features (Ongoing)
-- AES-256 encryption for secure message transmission
-- ECDHE (Elliptic Curve Diffie-Hellman Ephemeral) for secure session key exchange
-- Perfect Forward Secrecy (PFS)
-- Modular encryption and key exchange architecture
+## Features
 
-### 🧠 Objective
-The goal of this project is not to build a traditional chat application, but to implement and understand the underlying cryptographic mechanisms used in secure communication systems.
+### Cryptography
 
-### 🛠️ Tech Stack
-- Python
-- cryptography library
+* AES-256-GCM Encryption
+* ECDHE Key Exchange
+* HKDF Key Derivation
+* Ed25519 Digital Signatures
+* Perfect Forward Secrecy (PFS)
 
-### 📌 Current Progress
-- ✅ AES-GCM encryption module implemented
-- ✅ ECDHE key exchange implemented
-- ⏳ Digital signatures (in progress)
-- ⏳ Secure authentication (planned)
+### Authentication & Access Control
 
-### 🔍 Key Concepts Demonstrated
-- Symmetric vs Asymmetric Encryption
-- Secure Key Exchange (ECDHE)
-- Authenticated Encryption (AES-GCM)
-- Forward Secrecy
+* Secure Password Hashing using bcrypt
+* Brute Force Protection
+* Temporary Account Blocking
+* Secure Login Workflow
 
-### ⚠️ Note
-This is an academic project focused on learning and demonstrating cryptographic principles.
+### Secure Messaging
+
+* End-to-End Encryption
+* Message Integrity Verification
+* Self-Destructing Messages (TTL)
+* Session Key Rotation
+
+### Monitoring & Auditability
+
+* Security Dashboard
+* Audit Logging
+* Authentication Event Tracking
+* Session Monitoring
+* Message Lifecycle Tracking
+
+## Architecture
+
+User Login
+→ Authentication Layer
+→ ECDHE Key Exchange
+→ HKDF Key Derivation
+→ AES-256-GCM Encryption
+→ Ed25519 Signature Verification
+→ Secure Message Relay
+→ TTL-Based Message Management
+→ Security Dashboard & Audit Logs
+
+## Technologies Used
+
+* Python
+* Cryptography
+* bcrypt
+* Object-Oriented Programming
+
+## Security Concepts Demonstrated
+
+* Symmetric Encryption
+* Asymmetric Cryptography
+* Authenticated Encryption
+* Perfect Forward Secrecy
+* Secure Password Storage
+* Rate Limiting
+* Audit Logging
+* Secure Session Management
+
+## Project Objective
+
+The goal of this project is to implement and understand the security mechanisms used in modern communication systems while providing practical experience in applied cryptography, secure system design, authentication, monitoring, and message protection.
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/kriti-1-9/Secure-Chat-Application-Cryptography-Based-Python-.git
+```

@@ -77,3 +77,9 @@ packet2 = alice.send_message("New secure session 🔄")
 forwarded_packet2 = server.relay_message(packet2)
 
 bob.receive_message(forwarded_packet2, sign_pub_a)
+
+from monitoring import dashboard, logger
+
+dashboard.show_dashboard()
+
+logger.show_logs()

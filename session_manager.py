@@ -1,9 +1,16 @@
 from key_exchange import generate_keys, generate_shared_key
 from kdf import derive_key
+from monitoring import dashboard, logger
 
 class SessionManager:
 
     def create_session(self):
+        dashboard.session_created()
+
+        logger.log_event(
+        "SESSION_CREATED",
+        "New ECDHE session established"
+        )
 
         # Generate temporary ECDHE keys
         priv_a, pub_a = generate_keys()

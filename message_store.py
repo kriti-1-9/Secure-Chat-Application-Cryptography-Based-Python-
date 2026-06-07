@@ -1,5 +1,8 @@
 import time
 
+from projects.cybershield import dashboard
+from monitoring import dashboard, logger
+
 class MessageStore:
 
     def __init__(self):
@@ -16,6 +19,16 @@ class MessageStore:
         })
 
     def cleanup_expired_messages(self):
+        old_count = len(self.messages)
+        expired_count = old_count - len(self.messages)
+
+        for _ in range(expired_count):
+        dashboard.message_expired()
+
+        logger.log_event(
+            "MESSAGE_EXPIRED",
+            "TTL message removed"
+        )
 
         current_time = time.time()
 
